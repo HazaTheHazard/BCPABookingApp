@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BookingApplication
+namespace BCPABookingApp
 {
     public class Customer
     {

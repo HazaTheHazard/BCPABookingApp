@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BookingApplication
+namespace BCPABookingApp
 {
     class Show
     {
@@ -25,22 +25,7 @@ namespace BookingApplication
             showTime = show.showTime;
         }
 
-
-        Dictionary<int, string> showDict = new Dictionary<int, string>();
-
-        public string GetShowByID(int id)
-        {
-            if (id == 1)
-                showName = "Avengers: Endgame";
-            else if (id == 2)
-                showName = "Jurassic World III";
-            else if (id == 3)
-                showName = "Star Wars: Episode IX";
-
-            return showName;
-        }
-
-        public int SelectShowID()
+        public string SelectShow()
         {
             Console.WriteLine("{0}" +
                 "-------------------------------------------------------SELECT SHOW----------------------------------------------------- {0}" +
@@ -58,9 +43,53 @@ namespace BookingApplication
                 ch = Convert.ToInt32(Console.ReadLine());
             }
 
-            return ch;
+            switch (ch)
+            {
+                case 1:
+                    return "Avengers: Endgame";
+                case 2:
+                    return "Jurassic World III";
+                case 3:
+                    return "Star Wars: Episode IX";
+                default:
+                    return "There are no shows with this ID";
+
+            }
+
         }
 
+        public string SelectShowTime()
+        {
+            Console.WriteLine("{0}" +
+                 "----------------------------------------------------SELECT SHOW TIME-------------------------------------------------- {0}" +
+                 " There are 3 showings available today: {0}" +
+                 "1. 13:30 {0}" +
+                 "2. 19:00 {0}" +
+                 "3. 22:30 {0}", Environment.NewLine);
+
+            Console.WriteLine("Please select a show time:");
+
+            var ch = Convert.ToInt32(Console.ReadLine());
+
+            while (!new[] { 1, 2, 3 }.Contains(ch))
+            {
+                Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
+                ch = Convert.ToInt32(Console.ReadLine());
+            }
+
+            switch (ch)
+            {
+                case 1:
+                    return "13:30";
+                case 2:
+                    return "19:00";
+                case 3:
+                    return "22:30";
+                default:
+                    return "There are no shows with this ID";
+
+            }
+        }
 
     }
 }
