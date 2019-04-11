@@ -5,7 +5,7 @@ namespace BookingApplication
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int ch = 0;
             Customer newCustomer = new Customer();
@@ -13,7 +13,7 @@ namespace BookingApplication
             if (newCustomer.LoggedIn())
             {
                 ch = MainMenu(ch);
-                MainMenuSelection(ch, newCustomer);
+                MainMenuShowSelection(ch, newCustomer);
 
             }
 
@@ -43,31 +43,26 @@ namespace BookingApplication
             return ch;
         }
 
-        private static void MainMenuSelection(int ch, Customer newCustomer)
+        private static void MainMenuShowSelection(int ch, Customer customer)
         {
             if (ch == 1)
             {
                 Show show = new Show();
-                show.SelectShow();
+                var showID = show.SelectShowID();
 
-                Console.WriteLine("Please select a show:");
-
-                ch = Convert.ToInt32(Console.ReadLine());
-
-                while (!new[] { 1, 2, 3 }.Contains(ch))
-                {
-                    Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
-                    ch = Convert.ToInt32(Console.ReadLine());
-                }
-
-                string selectedShow = show.GetShowByID(ch);
+                string selectedShow = show.GetShowByID(showID);
                 Console.WriteLine("You have selected the show: " + selectedShow);
 
 
-                //select show
+
+
+
                 //select show time
 
                 //confirm show and show time
+
+                bool confirmShowAndTime = Confirmation($"Are you sure you wish to proceed to Seat selection for {selectedShow} at {"1900"}? [Y/N]");
+
 
                 //select seat
                 //calc seat prices 
@@ -90,9 +85,9 @@ namespace BookingApplication
             else if (ch == 3)
             {
 
-                newCustomer = newCustomer.GetProfileInfo(newCustomer);
+                customer = customer.GetProfileInfo(customer);
                 Console.WriteLine("Name: {0} {1} {3}" +
-                    "Address: {2}", newCustomer.first, newCustomer.last, newCustomer.address, Environment.NewLine);
+                    "Address: {2}", customer.first, customer.last, customer.address, Environment.NewLine);
 
                 MainMenu(ch);
             }

@@ -10,7 +10,6 @@ namespace BookingApplication
         public string first;
         public string address;
 
-
         public Customer()
         {
             last = "";

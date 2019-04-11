@@ -7,9 +7,9 @@ namespace BookingApplication
 {
     class Show
     {
-        private string showName;
-        private string showDate;
-        private string showTime;
+        public string showName;
+        public string showDate;
+        public string showTime;
 
         public Show()
         {
@@ -18,21 +18,29 @@ namespace BookingApplication
             showTime = "";
         }
 
+        public Show(Show show)
+        {
+            showName = show.showName;
+            showDate = show.showDate;
+            showTime = show.showTime;
+        }
+
+
         Dictionary<int, string> showDict = new Dictionary<int, string>();
 
         public string GetShowByID(int id)
         {
             if (id == 1)
-                return "Avengers: Endgame";
+                showName = "Avengers: Endgame";
             else if (id == 2)
-                return "Jurassic World III";
+                showName = "Jurassic World III";
             else if (id == 3)
-                return "Star Wars: Episode IX";
+                showName = "Star Wars: Episode IX";
 
-            return "No show with this ID";
+            return showName;
         }
 
-        public void SelectShow()
+        public int SelectShowID()
         {
             Console.WriteLine("{0}" +
                 "-------------------------------------------------------SELECT SHOW----------------------------------------------------- {0}" +
@@ -40,7 +48,19 @@ namespace BookingApplication
                 "2. Jurassic World III {0}" +
                 "3. Star Wars: Episode IX {0}", Environment.NewLine);
 
+            Console.WriteLine("Please select a show:");
+
+            var ch = Convert.ToInt32(Console.ReadLine());
+
+            while (!new[] { 1, 2, 3 }.Contains(ch))
+            {
+                Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
+                ch = Convert.ToInt32(Console.ReadLine());
+            }
+
+            return ch;
         }
+
 
     }
 }
