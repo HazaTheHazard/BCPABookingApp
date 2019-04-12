@@ -45,21 +45,27 @@ namespace BCPABookingApp
 
                 bool confirmShowAndTime = Confirmation($"Are you sure you wish to proceed to Seat selection for {selectedShow} at {showTime}? [Y/N]");
 
-                Seat seat = new Seat();
-                seat = seat.SelectSeat(seat);
-                string selectedSeat = Convert.ToString(seat.seatNum + seat.seatRow);
-                Console.WriteLine("You have selected the Seat: " + selectedSeat + Environment.NewLine);
+                if (confirmShowAndTime)
+                {
+                    Seat seat = new Seat();
+                    seat = seat.SelectSeat(seat);
+                    string selectedSeat = Convert.ToString(seat.seatNum + seat.seatRow);
+                    Console.WriteLine("You have selected the Seat: " + selectedSeat + Environment.NewLine);
 
-                Ticket ticket = new Ticket();
-                ticket.price = ticket.GetFormattedSeatPrice(selectedSeat);
-                Console.WriteLine($"The price of Seat {selectedSeat} is: £{ticket.price}." + Environment.NewLine);
+                    Ticket ticket = new Ticket();
+                    ticket.price = ticket.GetFormattedSeatPrice(selectedSeat);
+                    Console.WriteLine($"The price of Seat {selectedSeat} is: £{ticket.price}." + Environment.NewLine);
 
 
-                bool ticketPurchased = Confirmation($"Ticket for {selectedShow} at {showTime} for £{ticket.price} will be added to your account." +
-                    $" Is this correct? [Y/N]");
+                    bool ticketPurchased = Confirmation($"Ticket for {selectedShow} at {showTime} for £{ticket.price} will be added to your account." +
+                        $" Is this correct? [Y/N]");
 
-                if (ticketPurchased)
-                    Success();
+                    if (ticketPurchased)
+                        Success();
+                }
+                else
+                    MainMenu();
+                
             }
             else if (ch == 2)
             {
