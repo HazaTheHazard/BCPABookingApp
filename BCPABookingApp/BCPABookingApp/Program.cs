@@ -16,7 +16,7 @@ namespace BCPABookingApp
                 ch = Menu.MainMenu();
                 Menu.MainMenuShowSelection(ch, newCustomer);
             }
-            Console.ReadKey()
+            Console.ReadKey();
         }
 
         public static void ExitApp()
