@@ -18,13 +18,6 @@ namespace BCPABookingApp
             tier = 0;
         }
 
-        public Seat(Seat seat)
-        {
-            seatNum = seat.seatNum;
-            seatRow = seat.seatRow;
-            tier = seat.tier;
-        }
-
         public Seat SelectSeat(Seat seat)
         {
             Console.WriteLine("{0}" +
@@ -35,15 +28,15 @@ namespace BCPABookingApp
 
             Console.WriteLine("Please select an available Seat:");
 
-            var ch = Convert.ToInt32(Console.ReadLine());
+            var choiceID = Convert.ToInt32(Console.ReadLine());
 
-            while (!new[] { 1, 2, 3 }.Contains(ch))
+            while (!new[] { 1, 2, 3 }.Contains(choiceID))
             {
                 Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
-                ch = Convert.ToInt32(Console.ReadLine());
+                choiceID = Convert.ToInt32(Console.ReadLine());
             }
 
-            switch (ch)
+            switch (choiceID)
             {
                 case 1:
                     seat.seatNum = 34; seat.seatRow = "H"; seat.tier = 3;

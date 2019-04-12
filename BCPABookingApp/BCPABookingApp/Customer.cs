@@ -17,13 +17,6 @@ namespace BCPABookingApp
             address = "";
         }
 
-        public Customer(Customer customer)
-        {
-            last = customer.last;
-            first = customer.first;
-            address = customer.address;
-        }
-
         public bool LoggedIn()
         {
             string username;

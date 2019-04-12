@@ -13,23 +13,23 @@ namespace BCPABookingApp
             price = 0.00m;
         }
 
-        public decimal GetFormattedSeatPrice(string seatNum)
+        public decimal GetFormattedSeatPrice(int tier)
         {
-            decimal value = GetSeatPrice(seatNum);
+            decimal value = GetSeatPrice(tier);
             value = Math.Round(value, 2);
             return value;
         }
 
-        public decimal GetSeatPrice(string seatNum)
+        public decimal GetSeatPrice(int tier)
         {
-            switch (seatNum)
+            switch (tier)
             {
-                case "34H":
+                case 3:
                     return 6.50m;
-                case "18B":
-                    return 14.00m;
-                case "23C":
+                case 2:
                     return 12.25m;
+                case 1:
+                    return 15.00m;
                 default:
                     return 0.00m;
             }

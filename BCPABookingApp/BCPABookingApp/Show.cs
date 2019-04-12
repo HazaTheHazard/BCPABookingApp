@@ -18,13 +18,6 @@ namespace BCPABookingApp
             showTime = "";
         }
 
-        public Show(Show show)
-        {
-            showName = show.showName;
-            showDate = show.showDate;
-            showTime = show.showTime;
-        }
-
         public string SelectShow()
         {
             Console.WriteLine("{0}" +
@@ -35,15 +28,15 @@ namespace BCPABookingApp
 
             Console.WriteLine("Please select a show:");
 
-            var ch = Convert.ToInt32(Console.ReadLine());
+            var choiceID = Convert.ToInt32(Console.ReadLine());
 
-            while (!new[] { 1, 2, 3 }.Contains(ch))
+            while (!new[] { 1, 2, 3 }.Contains(choiceID))
             {
                 Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
-                ch = Convert.ToInt32(Console.ReadLine());
+                choiceID = Convert.ToInt32(Console.ReadLine());
             }
 
-            switch (ch)
+            switch (choiceID)
             {
                 case 1:
                     return "Avengers: Endgame";
@@ -55,7 +48,6 @@ namespace BCPABookingApp
                     return "There are no shows with this ID";
 
             }
-
         }
 
         public string SelectShowTime()
@@ -69,15 +61,15 @@ namespace BCPABookingApp
 
             Console.WriteLine("Please select a show time:");
 
-            var ch = Convert.ToInt32(Console.ReadLine());
+            var choiceID = Convert.ToInt32(Console.ReadLine());
 
-            while (!new[] { 1, 2, 3 }.Contains(ch))
+            while (!new[] { 1, 2, 3 }.Contains(choiceID))
             {
                 Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
-                ch = Convert.ToInt32(Console.ReadLine());
+                choiceID = Convert.ToInt32(Console.ReadLine());
             }
 
-            switch (ch)
+            switch (choiceID)
             {
                 case 1:
                     return "13:30";

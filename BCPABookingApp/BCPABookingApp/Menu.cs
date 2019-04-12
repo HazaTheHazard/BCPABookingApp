@@ -5,10 +5,8 @@ using System.Text;
 
 namespace BCPABookingApp
 {
-    class Menu
+    class Menu : Program
     {
-        public static int ch;
-
         public static int MainMenu()
         {
             Console.WriteLine("{0}" +
@@ -19,21 +17,21 @@ namespace BCPABookingApp
 
             Console.WriteLine("Please enter a menu choice number:");
 
-            ch = Convert.ToInt32(Console.ReadLine());
+            choiceID = Convert.ToInt32(Console.ReadLine());
 
-            while (!new[] { 1, 2, 3 }.Contains(ch))
+            while (!new[] { 1, 2, 3 }.Contains(choiceID))
             {
                 Console.WriteLine("Invalid selection. Please select a valid menu choice number.");
-                ch = Convert.ToInt32(Console.ReadLine());
+                choiceID = Convert.ToInt32(Console.ReadLine());
             }
 
-            Console.WriteLine("You have selected option: " + ch);
-            return ch;
+            Console.WriteLine("You have selected option: " + choiceID);
+            return choiceID;
         }
 
-        public static void MainMenuShowSelection(int ch, Customer customer)
+        public static void MainMenuShowSelection(int choice, Customer customer)
         {
-            if (ch == 1)
+            if (choice == 1)
             {
                 Show show = new Show();
 
@@ -51,11 +49,11 @@ namespace BCPABookingApp
                     seat = seat.SelectSeat(seat);
                     string selectedSeat = Convert.ToString(seat.seatNum + seat.seatRow);
                     Console.WriteLine("You have selected the Seat: " + selectedSeat + Environment.NewLine);
+                    Console.WriteLine($"This is a Tier {seat.tier} Seat.", Environment.NewLine);
 
                     Ticket ticket = new Ticket();
-                    ticket.price = ticket.GetFormattedSeatPrice(selectedSeat);
+                    ticket.price = ticket.GetFormattedSeatPrice(seat.tier);
                     Console.WriteLine($"The price of Seat {selectedSeat} is: £{ticket.price}." + Environment.NewLine);
-
 
                     bool ticketPurchased = Confirmation($"Ticket for {selectedShow} at {showTime} for £{ticket.price} will be added to your account." +
                         $" Is this correct? [Y/N]");
@@ -67,7 +65,7 @@ namespace BCPABookingApp
                     MainMenu();
                 
             }
-            else if (ch == 2)
+            else if (choice == 2)
             {
                 bool logOut = Confirmation("Are you sure you wish to Log out? [Y/N]");
                 if (logOut)
@@ -76,7 +74,7 @@ namespace BCPABookingApp
                     MainMenu();
 
             }
-            else if (ch == 3)
+            else if (choice == 3)
             {
 
                 customer = customer.GetProfileInfo(customer);

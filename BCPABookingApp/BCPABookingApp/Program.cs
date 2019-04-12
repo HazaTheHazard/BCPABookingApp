@@ -5,7 +5,7 @@ namespace BCPABookingApp
 {
     class Program
     {
-        public static int ch;
+        public static int choiceID;
 
         private static void Main(string[] args)
         {
@@ -13,8 +13,8 @@ namespace BCPABookingApp
 
             if (newCustomer.LoggedIn())
             {
-                ch = Menu.MainMenu();
-                Menu.MainMenuShowSelection(ch, newCustomer);
+                choiceID = Menu.MainMenu();
+                Menu.MainMenuShowSelection(choiceID, newCustomer);
             }
             Console.ReadKey();
         }
