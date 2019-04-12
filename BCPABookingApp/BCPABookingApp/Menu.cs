@@ -69,7 +69,11 @@ namespace BCPABookingApp
             {
                 bool logOut = Confirmation("Are you sure you wish to Log out? [Y/N]");
                 if (logOut)
+                {
+                    Console.WriteLine("You have been successfully logged out." + Environment.NewLine);
                     Program.ExitApp();
+                }
+                    
                 else
                     MainMenu();
 
